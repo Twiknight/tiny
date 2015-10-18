@@ -1,6 +1,6 @@
 # Tiny and How to build a web-server framework with Node.
 ### Why I'm launching this serial?
-Last year, I first head about Node and soon got to know its famous web-server framework [Express](http://www.express.io).
+Last year, I first head about Node and soon got to know its famous web-server framework [Express](http://www.expressjs.com).
 Knowing that Node is based on events and async I/O, I felt  interest in how it works when playing a role as web server.
 
 However, to understand how Express process is not easy for a beginner of Node.
