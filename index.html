@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Tiny by Twiknight</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Tiny</h1>
+      <h2 class="project-tagline">write your own web-server framework</h2>
+      <a href="https://github.com/Twiknight/tiny" class="btn">View on GitHub</a>
+      <a href="https://github.com/Twiknight/tiny/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/Twiknight/tiny/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="tiny--diy-web-server-framework-with-node" class="anchor" href="#tiny--diy-web-server-framework-with-node" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tiny : DIY web-server framework with Node.</h1>
+
+<h2>
+<a id="why-im-launching-this-serial" class="anchor" href="#why-im-launching-this-serial" aria-hidden="true"><span class="octicon octicon-link"></span></a>Why I'm launching this serial?</h2>
+
+<p>Last year, I head about Node and soon got fascinated with its events driven and non-blocking I/O model. Interested in how it works when playing a role as web server, I got to know its famous web-server framework <a href="expressjs">Express</a>.</p>
+
+<p>However, to understand how Express works is not easy for a beginner of Node.
+Though Express succeeds in commercial world, the code is far from friendly to readers as it has been built since the early versions of Node.
+Twisted inherits, nested callbacks and sometimes magic codes, all these keep it from a learning material for those who want take a glimpse on how Node works on net.</p>
+
+<p>Early this year, I managed to re-write it in CoffeeScript.
+That was <a href="expresscoffee">ExpressCoffee</a>.
+But even after that, I still can't understand how some certain lines work and how Express managed to organize its modules as a whole to support my site.</p>
+
+<p>Then in September, after ECMAScript 2015 was passed, I turned to babel for a support of new ES standard.
+It was just at that moment, an idea of translate Express to new ES code came up to me.
+That turned out to be <a href="express2015">Express2015</a>.
+Had you spared some time to read it, you'd find it just another ExpressCoffee.
+No much help to understand how Node amazingly works on web.</p>
+
+<p>Express2015 is written mostly in ES2015:</p>
+
+<ul>
+<li>it uses classes instead of prototypes;</li>
+<li>it turned all the <code>var</code>s into <code>const</code> and <code>let</code>;</li>
+<li>it transferred some of the nested callbacks into <code>Promise</code>;</li>
+<li>it replaced a few unreadable lines;</li>
+</ul>
+
+<p>However its hard to touch the most twisted parts without refactoring the interfaces.
+Once I try to change the interfaces, I'll be faced with a problem:</p>
+
+<ul>
+<li>Is it still Express if I modified its interfaces and made it hard compatible with the older version?</li>
+</ul>
+
+<p>I realized I need a new framework, a framework works comfortably with the new standard of ES 2015 and without all the burdens from Express.</p>
+
+<p>That's why I started <a href="tiny">tiny</a>.</p>
+
+<p>And I at the same time I started this serial to help those who hold the same interest in Node and web-server as me.</p>
+
+<h2>
+<a id="whats-this-serial-about" class="anchor" href="#whats-this-serial-about" aria-hidden="true"><span class="octicon octicon-link"></span></a>What's this serial about?</h2>
+
+<p>As I mentioned on the last section. This is a tutorial helps the newcomers to understand how Node works as web server.</p>
+
+<p>However this one is different. What distinguishes it from the numerous traditional tutorials is that it works with a project of building a web server framework from the very beginning.</p>
+
+<p>Yes, a web-server-framework just like Express, Not a web-server or website.</p>
+
+<p>So this serial will mainly focus on Node and Net, but I'll also introduce how a project is started, designed, coded and tested with Node.
+As the chapter goes, tiny will support more and more features. So it is also a glimpse on how incremental developing works.</p>
+
+<h2>
+<a id="a-tree-view-of-the-project-repo" class="anchor" href="#a-tree-view-of-the-project-repo" aria-hidden="true"><span class="octicon octicon-link"></span></a>A tree view of the project repo</h2>
+
+<p>Tiny contains both code and book.
+Below is a introduction to all the parts of it.</p>
+
+<ul>
+<li>
+<strong>src</strong>: src is where the original code lies. Code here is written in ES 2015 following the new standard.</li>
+<li>
+<strong>lib</strong>: lib contains the code compiled by <a href="babel">Babel</a>. Usually you won't read it (as it lacks readablity).</li>
+<li>
+<strong>demo</strong>: demo contains a demo built with tiny. Demo will vary on different branches to fit the current version of tiny.</li>
+<li>
+<strong>tests</strong>: tests contains test cases. They wipe out predictable bugs and keep the consistency of your API.</li>
+<li>
+<strong>book</strong>: book is where the tutorials lie.</li>
+<li>
+<strong>other files</strong>:
+
+<ul>
+<li>
+<strong>gulpfile.js</strong>: we use gulp to help compiling our code. More about <a href="gulp">Gulp</a>.</li>
+<li>
+<strong>.gitignore</strong>: a file to tell git to ignore some files. In our project, it prevents you from committing files in the node_modules directory. More about <a href="git">git</a>.</li>
+<li>
+<strong>license</strong>: MIT license.</li>
+</ul>
+</li>
+</ul>
+
+<h3>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h3>
+
+<p><a href="license">MIT</a>.</p>
+
+<h3>
+<a id="author" class="anchor" href="#author" aria-hidden="true"><span class="octicon octicon-link"></span></a>Author</h3>
+
+<p><a href="my-page">Twiknight</a></p>
+
+<p>mail: <a href="mail">twiknight@163.com</a></p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/Twiknight/tiny">Tiny</a> is maintained by <a href="https://github.com/Twiknight">Twiknight</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
