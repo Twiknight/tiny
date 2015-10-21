@@ -1,15 +1,13 @@
 'use strict'
 
 const gulp = require('gulp');
-const babel = require('gulp-babel');
-const changed = require('gulp-changed');
+const mocha = require('gulp-mocha')
 
-const SRC = 'src/**/*.js';
-const DEST = 'lib';
+const TEST = 'test/*.js';
 
-gulp.task('default', function(){
-    return gulp.src(SRC)
-            .pipe(changed(DEST))
-            .pipe(babel())
-            .pipe(gulp.dest(DEST));
+gulp.task('test', function(){
+    return gulp.src(TEST, {read:false})
+            .pipe(mocha({
+                reporter: 'spec'
+            }));
 });
