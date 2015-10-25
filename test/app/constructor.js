@@ -1,7 +1,7 @@
 'use strict'
 
 const expect = require('chai').expect;
-const Tiny = require('../lib/app');
+const Tiny = require('../../lib/app');
 const http = require('http');
 const https = require('https');
 
