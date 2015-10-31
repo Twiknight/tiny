@@ -4,7 +4,6 @@ const expect = require('chai').expect;
 const Request = require('../../lib/request');
 const Response = require('../../lib/response');
 const httpMocks = require('node-mocks-http');
-const urlParse = require('url').parse;
 
 describe('response.statusCode', function(){
 
