@@ -48,6 +48,8 @@ describe('response.body', function(){
         expect(res.body).to.equal(bf);
         res.removeBody();
         expect(res).to.not.have.property('_body');
+        expect(res.headers).to.not.have.property('Content-Type');
+        expect(res.headers).to.not.have.property('Content-Length');
         done();
     });
 });
